@@ -22,12 +22,12 @@ class App extends Component {
     auth.onAuthStateChanged(user => {
       if (user) {
         this.setState({ user })
-        console.log(this.state.user)
+        // console.log(this.state.user)
 
         this.usersRef = database.ref('/users')
-        console.log(this.usersRef)
+        // console.log(this.usersRef)
         this.userRef = this.usersRef.child(user.uid)
-        console.log(this.userRef)
+        // console.log(this.userRef)
 
         this.userRef
             .once('value')
@@ -37,8 +37,8 @@ class App extends Component {
                 return
               }
 
-              const userData = pick(snapshot.val(), ['displayName', 'photoURL', 'email'])
-
+              const userData = pick(user, ['displayName', 'photoURL', 'email'])
+              console.log(userData)
               this.userRef.set(userData)
             })
         
