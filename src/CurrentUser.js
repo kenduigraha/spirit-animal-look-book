@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { auth } from './firebase';
 import './CurrentUser.css';
 
-const CurrentUser = ({ user }) => {
+const CurrentUser = ({ user, handleSignOut }) => {
   return (
     <div className="CurrentUser">
       <img
@@ -15,7 +15,7 @@ const CurrentUser = ({ user }) => {
         <p className="CurrentUser--email">{ user.email }</p>
         <button
           className="CurrentUser--signout"
-          onClick={() => auth.signOut()}
+          onClick={ handleSignOut }
         >
           Sign Out
         </button>

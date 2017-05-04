@@ -16,6 +16,16 @@ class App extends Component {
       user: null,
       users: {}
     };
+
+    this._handleSignOut = this._handleSignOut.bind(this)
+  }
+
+  _handleSignOut () {
+    console.log('sign out')
+    
+    this.setState({ user: null })
+    
+    return auth.signOut()
   }
 
   componentDidMount(){
@@ -66,7 +76,7 @@ class App extends Component {
           user
           ?
             <div>
-              <CurrentUser user={ user } />
+              <CurrentUser user={ user } handleSignOut={ this._handleSignOut } />
             </div>
           :
             <SignIn />
