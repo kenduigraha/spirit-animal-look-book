@@ -29,6 +29,9 @@ class ProfileCard extends Component {
           .set(snapshot.downloadURL)
     })
 
+    uploadTask.on('state_changed', snapshot => {
+      console.log(snapshot.bytesTransferred / snapshot.totalBytes * 100 + '%')
+    })
   }
 
   render() {
@@ -51,7 +54,7 @@ class ProfileCard extends Component {
 
         <FileInput
           accept=".png,.jpg,.gif,.jpeg"
-          placeholder=""
+          placeholder="Input Your Photo"
           onChange={ this._handleSubmitUploadImage }
         />
       </article>
