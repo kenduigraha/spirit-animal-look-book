@@ -76,6 +76,13 @@ class App extends Component {
           user
           ?
             <div>
+              <section className="ProfileCards">
+                {
+                  map(users, (user, uid) => {
+                    return <ProfileCard key={ uid } user={ user } uid={ uid } />
+                  })
+                }
+              </section>
               <CurrentUser user={ user } handleSignOut={ this._handleSignOut } />
             </div>
           :
